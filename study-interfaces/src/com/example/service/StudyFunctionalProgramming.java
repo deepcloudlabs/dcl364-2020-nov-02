@@ -27,11 +27,27 @@ public class StudyFunctionalProgramming {
         Predicate<Integer> isEven = x -> x%2 == 0;
 		Function<Integer,Integer> square = y -> y * y;
 		BinaryOperator<Integer> accumulate = (s,z)->s+z;
-		Consumer<Integer> printInt = u -> System.out.println(u);
+		// Consumer<Integer> printInt = u -> System.out.println(u);
+		Consumer<Integer> printInt = System.out::println;
+		// How to define function since Java SE 8
+		// 1. Lambda Expression
+		// 2. Method Reference
 		numbers.stream()
-               .filter(isEven)
-               .map(square)
-               .reduce(Integer::sum);
+               .filter(Utility::ciftMi)
+               .map(Utility::kare)
+               .reduce(Utility::topla); // interface static method
 	}
 
+}
+
+interface Utility {
+	public static int topla(int x,int y) {
+		return x + y;
+	}
+	public static int kare(int x) {
+		return x * x;
+	}
+	public static boolean ciftMi(int x) {
+		return x%2 == 0;
+	}
 }
