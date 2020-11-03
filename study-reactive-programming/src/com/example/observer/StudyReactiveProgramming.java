@@ -27,6 +27,7 @@ public class StudyReactiveProgramming {
  		publisher.subscribe(subscriber2);
  		events.forEach(publisher::submit);
         TimeUnit.SECONDS.sleep(30); 
+        publisher.close();
         System.err.println("Application is done.");
 	}
 }
