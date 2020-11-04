@@ -4,6 +4,7 @@ package com.example.hr.domain;
 // Ubiquitous Language: Entity
 // Domain Driven Design: Ubiquitous Language -> Bounded Context
 // Entity -> Identity, Mutable
+// Root Entity -> Aggregate
 public class Employee {
 	private final TcKimlikNo identity;
 	private Fullname fullname;
@@ -32,6 +33,59 @@ public class Employee {
 		this.photo = photo;
 	}
 
+	public Employee(Builder builder) {
+		this.identity = builder.identity;
+		this.fullname = builder.fullname;
+		this.birthYear = builder.birthYear;
+		this.salary = builder.salary;
+		this.account = builder.account;
+		this.employeeType = builder.employeeType;
+		this.department = builder.department;
+		this.photo = builder.photo;
+	}
+
+	public static class Builder {
+		private final TcKimlikNo identity;
+		private Fullname fullname;
+		private Money salary;
+		private Account account;
+		private final BirthYear birthYear;
+		private EmployeeType employeeType;
+		private Department department;
+		private Photo photo;
+		
+		public Builder(TcKimlikNo identity, BirthYear birthYear) {
+			this.identity = identity;
+			this.birthYear = birthYear;
+		}
+		public Builder fullname(String first, String last) {
+			this.fullname = new Fullname(first, last);
+			return this;
+		}
+		public Builder salary(double value, FiatCurrency currency) {
+			this.salary = Money.of(value, currency);
+			return this;
+		}
+		public Builder account(Iban iban) {
+			this.account = new Account(iban);
+			return this;
+		}
+		public Builder employeeType(EmployeeType employeeType) {
+			this.employeeType = employeeType;
+			return this;
+		}
+		public Builder department(Department department) {
+			this.department = department;
+			return this;
+		}
+		public Builder photo(byte[] values) {
+			this.photo = Photo.valueOf(values);
+			return this;
+		}
+		public Employee build() {
+			return new Employee(this);
+		}
+	}
 	public Fullname getFullname() {
 		return fullname;
 	}
