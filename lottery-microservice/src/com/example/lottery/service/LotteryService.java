@@ -4,9 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
+// Domain Model
 // CDI Bean -> CDI Component 
 @Named
 @Singleton
@@ -14,9 +19,10 @@ public class LotteryService {
    private RandomNumberService randomNumberService;
 	
    // Dependency Injection using Constructor
+   @Inject
    public LotteryService(RandomNumberService randomNumberService) {
 		this.randomNumberService = randomNumberService;
-	}
+   }
    
    // Dependency Injection using setter
     public void setRandomNumberService(RandomNumberService randomNumberService) {
