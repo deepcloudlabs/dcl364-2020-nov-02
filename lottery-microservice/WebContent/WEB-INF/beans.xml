@@ -10,4 +10,7 @@
          <class>com.example.lottery.aop.ProfileInterceptor</class>
          <class>com.example.lottery.aop.AuditInterceptor</class>
      </interceptors>
+     <decorators>
+     	<class>com.example.lottery.decorator.LotteryServiceDecorator</class>
+     </decorators>
 </beans>
