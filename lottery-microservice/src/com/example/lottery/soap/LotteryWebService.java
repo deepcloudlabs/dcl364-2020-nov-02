@@ -9,9 +9,9 @@ import javax.jws.WebService;
 
 import com.example.lottery.service.LotteryService;
 // Adapter
-@WebService
+//@WebService
 public class LotteryWebService {
-	@Inject // 1) Field Injection
+	//@Inject // 1) Field Injection
 	private LotteryService lotteryService;
 	
 	@WebMethod
