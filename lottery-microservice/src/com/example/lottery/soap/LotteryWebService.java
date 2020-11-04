@@ -2,10 +2,8 @@ package com.example.lottery.soap;
 
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.jws.WebService;
 
 import com.example.lottery.service.LotteryService;
 // Adapter
