@@ -23,8 +23,6 @@ public class EmployeeEntity {
 	@Column(name = "last_name")
 	private String lastName;
 	private double salary;
-	@Enumerated(EnumType.STRING)
-	private FiatCurrency currency;
 	private String iban;
 	@Column(name = "birth_year")
 	private int birthYear;
@@ -71,13 +69,6 @@ public class EmployeeEntity {
 		this.salary = salary;
 	}
 
-	public FiatCurrency getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(FiatCurrency currency) {
-		this.currency = currency;
-	}
 
 	public String getIban() {
 		return iban;
@@ -147,7 +138,7 @@ public class EmployeeEntity {
 	@Override
 	public String toString() {
 		return "EmployeeEntity [identity=" + identity + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", salary=" + salary + ", currency=" + currency + ", iban=" + iban + ", birthYear=" + birthYear
+				+ ", salary=" + salary + ", iban=" + iban + ", birthYear=" + birthYear
 				+ ", department=" + department + ", employeeType=" + employeeType + "]";
 	}
 

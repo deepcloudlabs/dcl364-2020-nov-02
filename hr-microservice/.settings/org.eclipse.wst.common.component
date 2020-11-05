@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
     <wb-module deploy-name="hr-microservice">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="hr-domain.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hr-domain/hr-domain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                
         <property name="context-root" value="hr-microservice"/>
+                
         <property name="java-output-path" value="/hr-microservice/build/classes"/>
+            
     </wb-module>
+    
 </project-modules>

@@ -3,6 +3,7 @@
 	<name>hr-microservice</name>
 	<comment></comment>
 	<projects>
+		<project>hr-domain</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
