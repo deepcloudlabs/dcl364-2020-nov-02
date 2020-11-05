@@ -8,9 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import com.example.hr.domain.Account;
+import com.example.hr.domain.BirthYear;
 import com.example.hr.domain.Department;
+import com.example.hr.domain.Employee;
 import com.example.hr.domain.EmployeeType;
 import com.example.hr.domain.FiatCurrency;
+import com.example.hr.domain.Fullname;
+import com.example.hr.domain.Iban;
+import com.example.hr.domain.TcKimlikNo;
 
 @Entity
 @Table(name = "employees")
@@ -140,6 +146,29 @@ public class EmployeeEntity {
 		return "EmployeeEntity [identity=" + identity + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", salary=" + salary + ", iban=" + iban + ", birthYear=" + birthYear
 				+ ", department=" + department + ", employeeType=" + employeeType + "]";
+	}
+    // ACL: Anti-Corruption Layer (DDD)
+	public void fromEmployee(Employee employee) {
+		this.identity = employee.getIdentity().getValue();
+		Fullname fullname = employee.getFullname();
+		this.firstName = fullname.getFirst();
+		this.lastName = fullname.getLast();
+		this.salary = employee.getSalary().getValue();
+		this.iban = employee.getAccount().getIban().getValue();
+		this.image = employee.getPhoto().getValues();
+		this.department = employee.getDepartment();
+		this.birthYear = employee.getBirthYear().getValue();
+	}
+
+	public Employee toEmployee() {
+		return new Employee.Builder(TcKimlikNo.valueOf(this.identity), BirthYear.valueOf(this.birthYear))
+		        .fullname(this.firstName, this.lastName)
+		        .account(Iban.valueOf(this.iban))
+		        .salary(salary, FiatCurrency.TRY)
+		        .employeeType(EmployeeType.FULLTIME)
+		        .photo(this.image)
+		        .department(this.department)
+				.build();
 	}
 
 }

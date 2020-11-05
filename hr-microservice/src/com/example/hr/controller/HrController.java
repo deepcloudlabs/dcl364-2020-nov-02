@@ -14,7 +14,12 @@ import com.example.hr.domain.TcKimlikNo;
 import com.example.hr.dto.FireEmployeeResponse;
 import com.example.hr.dto.HireEmployeeRequest;
 import com.example.hr.dto.HireEmployeeResponse;
-
+/**
+ * Hire Employee:
+ * curl -X POST http://localhost:8080/hr-microservice/api/v1/employees -d "{\"identity\": \"11111111110\", \"firstName\": \"jack\", \"lastName\": \"bauer\", \"salary\": 100000, \"iban\": \"TR210006267656611494742597\", \"birthYear\": 1956, \"image\": \"\", \"department\": \"SALES\", \"employeeType\": \"FULLTIME\"}" -H "Content-Type: application/json" -H "Accept: application/json"
+ * Fire Employee
+ * curl -X DELETE http://localhost:8080/hr-microservice/api/v1/employees/11111111110 -H "Accept: application/json"
+ */
 @Path("/employees")
 public class HrController {
 
