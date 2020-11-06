@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.example.hr.domain.Account;
 import com.example.hr.domain.BirthYear;
 import com.example.hr.domain.Department;
 import com.example.hr.domain.Employee;

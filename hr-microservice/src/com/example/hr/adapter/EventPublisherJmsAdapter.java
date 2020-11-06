@@ -2,10 +2,8 @@ package com.example.hr.adapter;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
-import javax.jms.Message;
 import javax.jms.Queue;
 import javax.json.Json;
 

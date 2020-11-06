@@ -1,10 +1,5 @@
 package com.example.hr.dto;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Lob;
-
 import com.example.hr.domain.BirthYear;
 import com.example.hr.domain.Department;
 import com.example.hr.domain.Employee;
