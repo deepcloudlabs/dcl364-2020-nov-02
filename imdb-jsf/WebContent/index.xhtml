@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Movie Search Page</title>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputText value="From:" />
+				<h:inputText id="from" required="true"
+					requiredMessage="You must enter a year!"
+					converterMessage="You must enter an integer"
+					value="#{searchView.fromYear}" />
+				<h:message style="color: red;" for="from" />
+
+				<h:outputText value="To:" />
+				<h:inputText id="to" required="true"
+					requiredMessage="You must enter a year!"
+					converterMessage="You must enter an integer"
+					value="#{searchView.toYear}" />
+				<h:message style="color: red;" for="to" />
+
+				<h:outputText value="Genre:" />
+				<h:selectOneMenu id="genre" value="#{searchView.genre}">
+					<f:selectItems value="#{genres}" itemLabel="#{genre.name}"
+						itemValue="#{genre.name}" var="genre" />
+				</h:selectOneMenu>
+				<h:commandButton value="Search">
+					<f:ajax listener="#{searchView.doSearch}"
+						execute="from to genre" render="movies" />
+				</h:commandButton>
+			</h:panelGrid>
+			<p:dataTable value="#{searchView.movies}" paginator="true"
+				id="movies" rows="10" paginatorAlwaysVisible="true"
+				paginatorPosition="top" var="movie">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Title" />
+					</f:facet>
+					<h:outputText value="#{movie.title}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Year" />
+					</f:facet>
+					<h:outputText value="#{movie.year}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Imdb" />
+					</f:facet>
+					<a href="http://www.imdb.com/title/#{movie.imdb}" target="_blank">Visit
+						me!</a>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Imdb Movie Search Page</title>
+	<style type="text/css">
+@import url('css/bootstrap.css');
+
+@import url('css/bootstrap-theme.css');
+</style>
+	<script type="text/javascript" src="js/lib/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.js"></script>
+</h:head>
+<h:body>
+	<div class="container" role="main">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Movie Search Page</h3>
+			</div>
+			<div class="panel-body">
+				<h:form>
+					<div class="form-group">
+						<label for="fromYear">From Year</label> 
+						<input type="text"
+							   class="form-control" 
+							   jsf:id="fromYear"
+							   jsf:value="#{imdbViewModel.fromYear}" />
+					</div>
+					<div class="form-group">
+						<label for="toYear">To Year</label> <input type="text"
+							class="form-control" jsf:id="toYear"
+							jsf:value="#{imdbViewModel.toYear}" />
+					</div>
+					<div class="form-group">
+						<label for="genre">Genre</label> <select jsf:id="genre" size="1"
+							jsf:value="#{imdbViewModel.genre}" class="form-control">
+							<f:selectItems value="#{allGenres}" var="genre"
+								itemLabel="#{genre.name}" itemValue="#{genre.name}" />
+						</select>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-success"
+							jsf:action="#{imdbViewModel.doSearch}">Search</button>
+					</div>
+				</h:form>
+			</div>
+		</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Movies</h3>
+			</div>
+			<div class="panel-body">
+				<h:dataTable class="table table-striped table-hover table-responsive"
+				             value="#{imdbViewModel.movies}" 
+					         var="movie">
+					<h:column>					    
+					    <f:facet name="header"><h:outputText value="Title" /></f:facet>
+						<h:outputText value="#{movie.title}" />
+					</h:column>
+					<h:column>
+					    <f:facet name="header"><h:outputText value="Year" /></f:facet>
+						<h:outputText value="#{movie.year}" />
+					</h:column>
+					<h:column>
+					    <f:facet name="header"><h:outputText value="Imdb Link" /></f:facet>
+						<a href="http://www.imdb.com/title/#{movie.imdb}" target="_blank">Visit
+							me!</a>
+					</h:column>
+				</h:dataTable>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://www.jboss.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="20.0" xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/schema/jbossas/jboss-web_20_0.xsd">
+	<context-root>stockmarket-client</context-root>
+</web-app>
